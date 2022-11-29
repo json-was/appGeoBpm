@@ -1,7 +1,7 @@
 import React from 'react'
 import { Loading, Logout, Permisos } from './src/components';
 import { PermissionsProvider } from './src/context';
-import { Alumno, Inicio, Login } from './src/screens';
+import { Alumno, AlumnoAyuda, Inicio, Login } from './src/screens';
 import { NavigationContainer } from '@react-navigation/native'
 import { Navigator } from './src/navigator/Navigator';
 
@@ -27,7 +27,8 @@ const App = () => {
           <Navigator/>
         </AppState>
       </NavigationContainer> */}
-      <Inicio />
+      {/* <Inicio /> */}
+      <AlumnoAyuda />
     </>
   )
 }

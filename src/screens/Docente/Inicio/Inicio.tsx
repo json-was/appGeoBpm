@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {Text, View, TouchableOpacity, ScrollView} from 'react-native';
 import {inicioStyles} from './Inicio.style';
 
