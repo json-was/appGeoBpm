@@ -1,11 +1,12 @@
 import React from 'react'
 import { Logout } from './src/components';
-import { Login } from './src/screens';
+import { Alumno, Login } from './src/screens';
 
 const App = () => {
   return (
     <>
-      <Login />
+      {/* <Login /> */}
+      <Alumno />
       {/* <Logout /> */}
     </>
   )
