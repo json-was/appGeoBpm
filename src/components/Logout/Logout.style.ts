@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native'
+import {StyleSheet} from 'react-native';
 
 export const logoutStyles = StyleSheet.create({
   container: {
@@ -21,5 +21,5 @@ export const logoutStyles = StyleSheet.create({
   buttonText: {
     color: '#fff',
     fontSize: 20,
-  }
-})
+  },
+});
