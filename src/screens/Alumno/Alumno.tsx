@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Text, View, TouchableOpacity} from 'react-native';
-import {Pulsaciones} from '../../components';
+import {Map, Pulsaciones} from '../../components';
 import {alumnoStyles} from './Alumno.style';
 
 export const Alumno = () => {
@@ -45,7 +45,9 @@ export const Alumno = () => {
       <Pulsaciones bpm={bpm} />
 
       {/* MAPA */}
-      <View style={alumnoStyles.mapContainer}>{/* <Map /> */}</View>
+      <View style={alumnoStyles.mapContainer}>
+        <Map />
+      </View>
     </View>
   );
 };
