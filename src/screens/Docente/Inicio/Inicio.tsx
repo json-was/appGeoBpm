@@ -1,6 +1,8 @@
 import React from 'react';
 import {Text, View, TouchableOpacity, ScrollView} from 'react-native';
 import {inicioStyles} from './Inicio.style';
+import { useDispatch } from 'react-redux';
+import { logout } from '../../../store/auth/authSlice';
 
 const alumnosDatos = [
   {
@@ -26,6 +28,13 @@ const alumnosDatos = [
 ];
 
 export const Inicio = () => {
+
+  const dispatch = useDispatch();
+
+  setTimeout( () => {
+    dispatch(logout())
+  }, 5000)
+
   return (
     <View style={inicioStyles.viewContainer}>
       <Text style={inicioStyles.title}>Alumnos</Text>

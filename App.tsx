@@ -4,6 +4,9 @@ import { PermissionsProvider } from './src/context';
 import { Alumno, AlumnoAyuda, Inicio, Login } from './src/screens';
 import { NavigationContainer } from '@react-navigation/native'
 import { Navigator } from './src/navigator/Navigator';
+import { store } from './src/store/store';
+import { Provider } from 'react-redux';
+import { RouterApp } from './src/navigator/RouterApp';
 
 const AppState = ({children}:any) => {
   return (
@@ -28,7 +31,10 @@ const App = () => {
         </AppState>
       </NavigationContainer> */}
       {/* <Inicio /> */}
-      <AlumnoAyuda />
+      {/* <AlumnoAyuda /> */}
+      <Provider store={store} >
+        <RouterApp />
+      </Provider>
     </>
   )
 }

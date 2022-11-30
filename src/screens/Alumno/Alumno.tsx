@@ -2,11 +2,16 @@ import React, {useState} from 'react';
 import {Text, View, TouchableOpacity} from 'react-native';
 import {Map, Pulsaciones} from '../../components';
 import {alumnoStyles} from './Alumno.style';
+import { useDispatch } from 'react-redux';
+import { logout } from '../../store/auth/authSlice';
 
 export const Alumno = () => {
+  const dispatch = useDispatch();
   const [bpm, setBpm] = useState(60);
 
-  const onLogout = () => {};
+  const onLogout = () => {
+    dispatch(logout())
+  };
 
   const sumar = () => {
     setBpm(bpm + 3);
