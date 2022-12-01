@@ -10,7 +10,7 @@ export const alumnoStyles = StyleSheet.create({
   mapContainer: {
     backgroundColor: '#aaa',
     width: 350,
-    height: 320,
+    height: 250,
   },
   title: {
     color: '#fff',

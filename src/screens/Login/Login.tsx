@@ -9,13 +9,11 @@ import {
 } from 'react-native';
 import {Logo, Background, loginStyles} from './Login.style';
 import {useForm} from '../../hooks';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState, AppDispatch } from '../../store/store';
-import { startLoginWithEmailPassword } from '../../store/auth/thunks';
+import {useDispatch} from 'react-redux';
+import {startLoginWithEmailPassword} from '../../store/auth/thunks';
 
 export const Login = () => {
-  const dispatch = useDispatch()
-  const {alumnosList,bpm,name,rol,status,uid} = useSelector((state:RootState) => state.auth)
+  const dispatch = useDispatch();
   const {email, password, onChange} = useForm({
     email: '',
     password: '',
@@ -23,20 +21,8 @@ export const Login = () => {
 
   const onSubmit = (event: any) => {
     event.preventDefault();
-    // console.log({email, password});
-    dispatch(startLoginWithEmailPassword({email, password}))
-    // console.log('*******************');
-    // console.log('login');
-    // console.log({alumnosList,bpm,email,name,rol,status,uid});
-    
+    dispatch(startLoginWithEmailPassword({email, password}));
   };
-
-  const datos = () => {
-    console.log('*******************');
-    console.log('TENGO LOS DATOS?');
-    console.log({alumnosList,bpm,email,name,rol,status,uid});
-  }
-
   return (
     <>
       <KeyboardAvoidingView
@@ -82,14 +68,6 @@ export const Login = () => {
               activeOpacity={0.8}
               style={loginStyles.button}
               onPress={onSubmit}>
-              <Text style={loginStyles.buttonText}>Login</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={loginStyles.buttonContainer}>
-            <TouchableOpacity
-              activeOpacity={0.8}
-              style={loginStyles.button}
-              onPress={datos}>
               <Text style={loginStyles.buttonText}>Login</Text>
             </TouchableOpacity>
           </View>

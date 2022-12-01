@@ -28,14 +28,18 @@ const studentDataSlice = createSlice({
       state.uid = null;
       state.name = null;
       state.bpm = null;
-      state.listado = null;
     },
     setListado: (state, {payload}) => {
       state.listado = payload;
     },
+    clearStudent2: state => {
+      state.uid = null;
+      state.name = null;
+      state.bpm = null;
+    },
   },
 });
 
-export const {setStudent, clearStudent, setListado} = studentDataSlice.actions;
+export const {setStudent, clearStudent, setListado, clearStudent2} = studentDataSlice.actions;
 
 export default studentDataSlice.reducer;

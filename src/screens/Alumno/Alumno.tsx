@@ -13,7 +13,6 @@ import {RootState} from '../../store/store';
 export const Alumno = () => {
   const dispatch = useDispatch();
   const {bpm, uid, email} = useSelector((state: RootState) => state.auth);
-  // const [bpm, setBpm] = useState(60);
 
   const onLogout = () => {
     dispatch(startLogoutFirebase());

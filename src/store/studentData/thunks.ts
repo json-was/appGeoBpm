@@ -1,7 +1,7 @@
 import {AppDispatch} from '../store';
 import {FirebaseDB} from '../../firebase/config';
 import {getDoc, doc} from 'firebase/firestore/lite';
-import {setListado} from './studentDataSlice';
+import {clearStudent2, setListado, setStudent} from './studentDataSlice';
 
 export const cargarLista = (): any => {
   return async (dispatch: AppDispatch, getState: any) => {
@@ -17,8 +17,17 @@ export const cargarLista = (): any => {
         };
         listaPrevia.push(base);
       }
-      // console.log(listaPrevia);
+      console.log(listaPrevia);
       dispatch(setListado(listaPrevia));
     }
+  };
+};
+
+
+export const actualizarAlumnoItem = (uid:string): any => {
+  return async (dispatch: AppDispatch) => {
+    const newDoc = doc(FirebaseDB, `userData/${uid}`);
+    const datos = await getDoc(newDoc);
+    dispatch(setStudent(datos.data()));
   };
 };

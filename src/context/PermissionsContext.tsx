@@ -1,11 +1,4 @@
 import React, {createContext, useState, useEffect} from 'react';
-// import {
-//   check,
-//   openSettings,
-//   PERMISSIONS,
-//   PermissionStatus,
-//   request,
-// } from 'react-native-permissions';
 import {AppState, Platform} from 'react-native';
 import { check, request, PermissionStatus, PERMISSIONS, openSettings } from 'react-native-permissions';
 

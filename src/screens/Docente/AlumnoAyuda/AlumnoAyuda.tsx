@@ -3,31 +3,32 @@ import {Text, View, TouchableOpacity, ScrollView} from 'react-native';
 import {Pulsaciones, Map} from '../../../components';
 import {alumnoAyudaStyle} from './AlumnoAyuda.style';
 import {Picker} from '@react-native-picker/picker';
-import { useDispatch } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import {actualizarAlumnoItem} from '../../../store/studentData/thunks';
+import {RootState} from '../../../store/store';
 
-export const AlumnoAyuda = ({route, navigation}:any) => {
+export const AlumnoAyuda = ({route, navigation}: any) => {
   const dispatch = useDispatch();
+  const {name, bpm} = useSelector((state: RootState) => state.studentData);
   const [selectedLanguage, setSelectedLanguage] = useState();
-  const bpmbase = 66;
+  const {uid} = route.params;
 
-  const {uid, name, bpm} = route.params;
-  const funt = () => {
-    console.log({uid, name, bpm});
-  }
+  dispatch(actualizarAlumnoItem(uid!));
 
+  const navegacion = () => {
+    navigation.navigate('DocenteInicio');
+  };
   return (
     <View style={alumnoAyudaStyle.viewContainer}>
       <ScrollView>
-      <View style={alumnoAyudaStyle.buttonContainerAtras}>
+        <View style={alumnoAyudaStyle.buttonContainerAtras}>
           <TouchableOpacity
             style={alumnoAyudaStyle.button}
-            // onPress={() => navigation.navigate('DocenteInicio')}
-            onPress={funt}
-          >
+            onPress={navegacion}>
             <Text style={alumnoAyudaStyle.buttonTextAtras}>{'< atras'}</Text>
           </TouchableOpacity>
         </View>
-        <Text style={alumnoAyudaStyle.title}>ALUMNO</Text>
+        <Text style={alumnoAyudaStyle.title}>ALUMNO: {name}</Text>
 
         {/* PICKER */}
         <Picker

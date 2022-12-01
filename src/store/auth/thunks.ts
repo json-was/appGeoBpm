@@ -11,8 +11,8 @@ import {
 import {loginWithEmailPassword, logoutFirebase} from '../../firebase/providers';
 import {doc, getDoc, increment, updateDoc} from 'firebase/firestore/lite';
 import {FirebaseDB} from '../../firebase/config';
-import { cargarLista } from '../studentData/thunks';
-import { clearStudent } from '../studentData/studentDataSlice';
+import {cargarLista} from '../studentData/thunks';
+import {clearStudent} from '../studentData/studentDataSlice';
 
 interface LoginData {
   email: string;
@@ -31,12 +31,6 @@ export const startLoginWithEmailPassword = ({
     if (!authResultado.ok) return dispatch(logout());
     dispatch(findByIdUserData(authResultado.uid!));
     dispatch(login(authResultado));
-    // const {alumnosList,bpm,name,rol,status,uid} = await getState().auth;
-    // console.log('*******************');
-    // console.log('TENGO LOS DATOS?');
-    // console.log({alumnosList,bpm,email,name,rol,status,uid});
-
-    // dispatch(logout());
   };
 };
 
@@ -45,24 +39,14 @@ export const findByIdUserData = (uid: string): any => {
     const newDoc = doc(FirebaseDB, `userData/${uid}`);
     const datos = await getDoc(newDoc);
     dispatch(setDatos(datos.data()));
-    // console.log('*******************');
-    // console.log('findByIdUserData');
-    // console.log(datos.data());
 
     const {rol, alumnosList} = await getState().auth;
-    // console.log('*******************');
-    // console.log('AGARRANDO EL ROL findByIdUserData2');
-    // console.log({rol});
     if (rol === 'Alumno') {
       dispatch(setAlumnoDatos(datos.data()));
-      // console.log('*******************');
-      // console.log('AGARRANDO EL ROL /// ENTREEEE findByIdUserData2');
     }
     if (rol === 'Docente') {
       dispatch(setDocenteDatos(datos.data()));
-      dispatch(cargarLista())
-      // console.log('*******************');
-      // console.log('AGARRANDO EL ROL /// ENTREEEE 2 findByIdUserData2');
+      dispatch(cargarLista());
     }
   };
 };
@@ -71,13 +55,12 @@ export const startLogoutFirebase = (): any => {
   return async (dispatch: any) => {
     await logoutFirebase();
     dispatch(logout());
-    dispatch(clearStudent())
+    dispatch(clearStudent());
   };
 };
 
-
 // ALUMNO THUNK
-export const sumarBpm = ():any => {
+export const sumarBpm = (): any => {
   return async (dispatch: AppDispatch, getState: any) => {
     const {uid, bpm} = await getState().auth;
     const newDoc = doc(FirebaseDB, `userData/${uid}`);
@@ -101,13 +84,10 @@ export const restarBpm = (): any => {
   };
 };
 
-export const actualizarBpm = (uid:string): any => {
+export const actualizarBpm = (uid: string): any => {
   return async (dispatch: AppDispatch) => {
     const newDoc = doc(FirebaseDB, `userData/${uid}`);
     const datos = await getDoc(newDoc);
-
-    // console.log('ACTUALIZAR');
-    // console.log(datos.data());
     dispatch(setNewBpm(datos.data()));
   };
 };

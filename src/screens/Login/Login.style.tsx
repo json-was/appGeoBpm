@@ -38,7 +38,6 @@ export const loginStyles = StyleSheet.create({
     justifyContent: 'center',
     marginBottom: 50,
     paddingHorizontal: 30,
-    // backgroundColor: '#5856d6'
   },
   title: {
     color: '#fff',
