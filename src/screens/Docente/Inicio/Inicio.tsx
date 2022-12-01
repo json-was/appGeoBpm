@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Text, View, TouchableOpacity, ScrollView} from 'react-native';
 import {inicioStyles} from './Inicio.style';
 import {useDispatch, useSelector} from 'react-redux';
 import {RootState} from '../../../store/store';
 import {startLogoutFirebase} from '../../../store/auth/thunks';
+import { cargarLista } from '../../../store/studentData/thunks';
 
 // const alumnosList = [
 //   {
@@ -28,9 +29,9 @@ import {startLogoutFirebase} from '../../../store/auth/thunks';
 //   },
 // ];
 
-export const Inicio = () => {
+export const Inicio = ({navigation}:any) => {
   const dispatch = useDispatch();
-  const {alumnosList} = useSelector((state: RootState) => state.auth);
+  const {listado} = useSelector((state: RootState) => state.studentData);
 
   const onLogout = () => {
     dispatch(startLogoutFirebase());
@@ -45,11 +46,14 @@ export const Inicio = () => {
             <Text style={inicioStyles.buttonTextSalir}>Salir</Text>
           </TouchableOpacity>
         </View>
-        {alumnosList?.map(id => {
+        {listado?.map((alumno) => {
           return (
-            <View style={inicioStyles.alumnoContainer} key={id}>
-              <TouchableOpacity style={inicioStyles.button}>
-                <Text style={inicioStyles.buttonText}>Alumno: {id}</Text>
+            <View style={inicioStyles.alumnoContainer} key={alumno.uid}>
+              <TouchableOpacity
+                style={inicioStyles.button}
+                onPress={() => navigation.navigate('DocenteAlumno', {...alumno})}
+              >
+                <Text style={inicioStyles.buttonText}>Alumno: {alumno.name}</Text>
               </TouchableOpacity>
             </View>
           );

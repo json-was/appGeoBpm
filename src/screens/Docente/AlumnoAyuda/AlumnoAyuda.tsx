@@ -3,14 +3,30 @@ import {Text, View, TouchableOpacity, ScrollView} from 'react-native';
 import {Pulsaciones, Map} from '../../../components';
 import {alumnoAyudaStyle} from './AlumnoAyuda.style';
 import {Picker} from '@react-native-picker/picker';
+import { useDispatch } from 'react-redux';
 
-export const AlumnoAyuda = () => {
+export const AlumnoAyuda = ({route, navigation}:any) => {
+  const dispatch = useDispatch();
   const [selectedLanguage, setSelectedLanguage] = useState();
   const bpmbase = 66;
+
+  const {uid, name, bpm} = route.params;
+  const funt = () => {
+    console.log({uid, name, bpm});
+  }
 
   return (
     <View style={alumnoAyudaStyle.viewContainer}>
       <ScrollView>
+      <View style={alumnoAyudaStyle.buttonContainerAtras}>
+          <TouchableOpacity
+            style={alumnoAyudaStyle.button}
+            // onPress={() => navigation.navigate('DocenteInicio')}
+            onPress={funt}
+          >
+            <Text style={alumnoAyudaStyle.buttonTextAtras}>{'< atras'}</Text>
+          </TouchableOpacity>
+        </View>
         <Text style={alumnoAyudaStyle.title}>ALUMNO</Text>
 
         {/* PICKER */}
@@ -43,7 +59,7 @@ export const AlumnoAyuda = () => {
 
         {/* BMP */}
         <View style={{alignItems: 'center'}}>
-          <Pulsaciones bpm={bpmbase} />
+          <Pulsaciones bpm={bpm} />
         </View>
 
         {/* MAPA */}

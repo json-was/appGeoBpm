@@ -5,11 +5,11 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {Loading} from '../components/Loading/Loading';
 import {Alumno} from '../screens/Alumno/Alumno';
 import {Inicio} from '../screens/Docente/Inicio/Inicio';
-import { AlumnoAyuda } from '../screens/Docente/AlumnoAyuda/AlumnoAyuda';
+import { AlumnoAyuda } from '../screens';
 
 const Stack = createNativeStackNavigator();
 
-export const RolRouter = () => {
+export const DocenteRouter = () => {
   const {rol} = useSelector((state: RootState) => state.auth);
 
   if (rol === null) {
@@ -21,14 +21,8 @@ export const RolRouter = () => {
       screenOptions={{
         headerShown: false,
       }}>
-      {rol === 'Docente' ? (
-        <>
-          <Stack.Screen name="DocenteInicio" component={Inicio} />
-          <Stack.Screen name="DocenteAlumno" component={AlumnoAyuda} />
-        </>
-      ) : (
-        <Stack.Screen name="Alumno" component={Alumno} />
-      )}
+        <Stack.Screen name="DocenteInicio" component={Inicio} />
+        <Stack.Screen name="DocenteAlumno" component={AlumnoAyuda} />
     </Stack.Navigator>
   );
 };

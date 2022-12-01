@@ -33,7 +33,9 @@ const App = () => {
       {/* <Inicio /> */}
       {/* <AlumnoAyuda /> */}
       <Provider store={store} >
-        <RouterApp />
+        <AppState>
+          <RouterApp />
+        </AppState>
       </Provider>
     </>
   )

@@ -42,4 +42,14 @@ export const alumnoAyudaStyle = StyleSheet.create({
     marginTop: 10,
     color: '#fff',
   },
+
+  buttonContainerAtras: {
+    alignItems: 'center',
+    marginTop: 20,
+  },
+  buttonTextAtras: {
+    textAlign: 'center',
+    color: '#fff',
+    fontSize: 20,
+  },
 });

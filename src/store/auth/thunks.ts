@@ -11,6 +11,8 @@ import {
 import {loginWithEmailPassword, logoutFirebase} from '../../firebase/providers';
 import {doc, getDoc, increment, updateDoc} from 'firebase/firestore/lite';
 import {FirebaseDB} from '../../firebase/config';
+import { cargarLista } from '../studentData/thunks';
+import { clearStudent } from '../studentData/studentDataSlice';
 
 interface LoginData {
   email: string;
@@ -47,7 +49,7 @@ export const findByIdUserData = (uid: string): any => {
     // console.log('findByIdUserData');
     // console.log(datos.data());
 
-    const {rol} = await getState().auth;
+    const {rol, alumnosList} = await getState().auth;
     // console.log('*******************');
     // console.log('AGARRANDO EL ROL findByIdUserData2');
     // console.log({rol});
@@ -58,6 +60,7 @@ export const findByIdUserData = (uid: string): any => {
     }
     if (rol === 'Docente') {
       dispatch(setDocenteDatos(datos.data()));
+      dispatch(cargarLista())
       // console.log('*******************');
       // console.log('AGARRANDO EL ROL /// ENTREEEE 2 findByIdUserData2');
     }
@@ -68,6 +71,7 @@ export const startLogoutFirebase = (): any => {
   return async (dispatch: any) => {
     await logoutFirebase();
     dispatch(logout());
+    dispatch(clearStudent())
   };
 };
 
