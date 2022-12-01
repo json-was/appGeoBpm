@@ -1,24 +1,30 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Text, View, TouchableOpacity} from 'react-native';
 import {Map, Pulsaciones} from '../../components';
 import {alumnoStyles} from './Alumno.style';
-import { useDispatch } from 'react-redux';
-import { logout } from '../../store/auth/authSlice';
+import {useDispatch, useSelector} from 'react-redux';
+import {
+  startLogoutFirebase,
+  sumarBpm,
+  restarBpm,
+} from '../../store/auth/thunks';
+import {RootState} from '../../store/store';
 
 export const Alumno = () => {
   const dispatch = useDispatch();
-  const [bpm, setBpm] = useState(60);
+  const {bpm, uid, email} = useSelector((state: RootState) => state.auth);
+  // const [bpm, setBpm] = useState(60);
 
   const onLogout = () => {
-    dispatch(logout())
+    dispatch(startLogoutFirebase());
   };
 
   const sumar = () => {
-    setBpm(bpm + 3);
+    dispatch(sumarBpm());
   };
 
   const restar = () => {
-    setBpm(bpm - 3);
+    dispatch(restarBpm());
   };
 
   return (
@@ -47,7 +53,7 @@ export const Alumno = () => {
       </View>
 
       {/* BMP */}
-      <Pulsaciones bpm={bpm} />
+      <Pulsaciones bpm={bpm!} />
 
       {/* MAPA */}
       <View style={alumnoStyles.mapContainer}>

@@ -12,7 +12,6 @@ export const inicioStyles = StyleSheet.create({
     height: 60,
     justifyContent: 'center',
   },
-
   title: {
     borderBottomColor: '#ccc',
     borderBottomWidth: 1,
@@ -27,9 +26,21 @@ export const inicioStyles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
   },
+  buttonSalir: {
+    marginBottom: 10,
+    width: '100%',
+    backgroundColor: '#ff8000',
+    height: 60,
+    justifyContent: 'center',
+  },
   buttonText: {
     marginLeft: 20,
     color: '#1e1e1e',
+    fontSize: 18,
+  },
+  buttonTextSalir: {
+    marginLeft: 20,
+    color: '#fff',
     fontSize: 18,
   },
 });

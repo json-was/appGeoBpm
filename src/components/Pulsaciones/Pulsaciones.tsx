@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 import {Heart, bpmStyles} from './Pulsaciones.style';
+import useEffect from 'react';
 
 interface Props {
   bpm: number;

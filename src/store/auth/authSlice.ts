@@ -32,7 +32,7 @@ const authSlice = createSlice({
       state.email = payload.email;
       state.errorMessage = null;
     },
-    logout: (state) => {
+    logout: state => {
       state.status = 'not-authenticated';
       state.uid = null;
       state.email = null;
@@ -55,6 +55,9 @@ const authSlice = createSlice({
     setDocenteDatos: (state, {payload}) => {
       state.alumnosList = payload.alumnosList;
     },
+    setNewBpm: (state, {payload}) => {
+      state.bpm = payload.bpm;
+    },
   },
 });
 
@@ -65,6 +68,7 @@ export const {
   setDatos,
   setAlumnoDatos,
   setDocenteDatos,
+  setNewBpm,
 } = authSlice.actions;
 
 export default authSlice.reducer;
