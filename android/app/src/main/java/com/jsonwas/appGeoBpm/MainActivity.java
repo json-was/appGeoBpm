@@ -1,4 +1,4 @@
-package com.appgeobpm;
+package com.jsonwas.appGeoBpm;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;

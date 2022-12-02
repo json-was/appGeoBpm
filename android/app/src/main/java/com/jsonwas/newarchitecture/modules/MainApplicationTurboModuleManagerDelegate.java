@@ -1,4 +1,4 @@
-package com.appgeobpm.newarchitecture.modules;
+package com.jsonwas.appGeoBpm.newarchitecture.modules;
 
 import com.facebook.jni.HybridData;
 import com.facebook.react.ReactPackage;

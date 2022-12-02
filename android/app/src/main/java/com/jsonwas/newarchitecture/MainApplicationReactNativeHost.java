@@ -1,4 +1,4 @@
-package com.appgeobpm.newarchitecture;
+package com.jsonwas.appGeoBpm.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -19,9 +19,9 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.fabric.ReactNativeConfig;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.appgeobpm.BuildConfig;
-import com.appgeobpm.newarchitecture.components.MainComponentsRegistry;
-import com.appgeobpm.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.jsonwas.appGeoBpm.BuildConfig;
+import com.jsonwas.appGeoBpm.newarchitecture.components.MainComponentsRegistry;
+import com.jsonwas.appGeoBpm.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 

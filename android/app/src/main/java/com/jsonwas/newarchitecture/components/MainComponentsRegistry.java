@@ -1,4 +1,4 @@
-package com.appgeobpm.newarchitecture.components;
+package com.jsonwas.appGeoBpm.newarchitecture.components;
 
 import com.facebook.jni.HybridData;
 import com.facebook.proguard.annotations.DoNotStrip;
